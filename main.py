@@ -31,8 +31,36 @@ import time
 #########################################################
 #                   Your Code Goes Below                #
 #########################################################
-
-
+def drawSquare(myturtle=None, width=0, top_left_x=0, top_left_y=0):
+  myturtle.up()
+  myturtle.goto(top_left_x,top_left_y)
+  myturtle.down()
+  for i in range(0,4):
+    myturtle.forward(width)
+    myturtle.right(90)
+    
+def drawLine(myturtle=None, x_start=0, y_start=0, x_end=0, y_end=0):
+  myturtle.up()
+  myturtle.goto(x_start,0)
+  myturtle.down()
+  myturtle.goto(x_end,0)
+  myturtle.up()
+  myturtle.goto(0,y_start)
+  myturtle.down()
+  myturtle.goto(0,y_end)
+  
+def drawCircle(myturtle=None, radius=0):
+  myturtle.up()
+  myturtle.goto(0,-1)
+  myturtle.down()
+  myturtle.circle(radius, steps=360)
+  
+def setUpDartboard(mywindow=None, myturtle=None):
+  mywindow.setworldcoordinates(-1, -1, 1, 1)
+  drawSquare(myturtle=myturtle, width=2, top_left_x=-1, top_left_y=1)
+  drawLine(myturtle=myturtle, x_start=-1, y_start=0, x_end=1, y_end=0)
+  drawLine(myturtle=myturtle, x_start=0, y_start=-1, x_end=0, y_end=1)
+  drawCircle(myturtle=myturtle, radius=1)
 
 #########################################################
 #         Do not alter any code below here              #
