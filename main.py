@@ -67,8 +67,26 @@ def throwDart(myturtle=None):
   x = random.uniform(-1, 1)
   y = random.uniform(-1, 1)
   myturtle.goto(x,y)
+  distance = myturtle.distance(0,0)
+  if distance < 1:
+    myturtle.color("green")
+  else:
+    myturtle.color("red")
   myturtle.down()
   myturtle.dot()
+  myturtle.color("black")
+
+def isInCircle(myturtle=None):
+  distance = myturtle.distance(0,0)
+  return(bool(distance < 1))
+  
+def playDarts(myturtle=None):
+  throwDart(myturtle=myturtle)
+  if isInCircle(myturtle=myturtle)==True:
+    print(1)
+  else:
+    print(0)
+  
 
 #########################################################
 #         Do not alter any code below here              #
