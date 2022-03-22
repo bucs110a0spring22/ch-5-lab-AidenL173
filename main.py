@@ -62,6 +62,14 @@ def setUpDartboard(mywindow=None, myturtle=None):
   drawLine(myturtle=myturtle, x_start=0, y_start=-1, x_end=0, y_end=1)
   drawCircle(myturtle=myturtle, radius=1)
 
+def throwDart(myturtle=None):
+  myturtle.up()
+  x = random.uniform(-1, 1)
+  y = random.uniform(-1, 1)
+  myturtle.goto(x,y)
+  myturtle.down()
+  myturtle.dot()
+
 #########################################################
 #         Do not alter any code below here              #
 #       Your code must work with the main proivided     #

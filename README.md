@@ -18,8 +18,10 @@ Grace days remaining: < # >/5
 ## KNOWN BUGS AND INCOMPLETE PARTS:
  < What parts of the project you were not able to complete >
 
-## REFERENCES:
- < List any outside resources used >
+## REFERENCES: 
+https://docs.python.org/3.7/library/turtle.html#turtle.setworldcoordinates
+https://docs.python.org/3.7/library/random.html
+
 
 ## MISCELLANEOUS COMMENTS:
- < Anything you would like the grader to know >
+N/A
