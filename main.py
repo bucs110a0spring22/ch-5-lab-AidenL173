@@ -62,32 +62,45 @@ def setUpDartboard(mywindow=None, myturtle=None):
   drawLine(myturtle=myturtle, x_start=0, y_start=-1, x_end=0, y_end=1)
   drawCircle(myturtle=myturtle, radius=1)
 
+def isInCircle(myturtle=None, circle_center_x=0, circle_center_y=0, radius=0):
+  distance = myturtle.distance(circle_center_x, circle_center_y)
+  return(bool(distance < radius))
+
 def throwDart(myturtle=None):
   myturtle.up()
   x = random.uniform(-1, 1)
   y = random.uniform(-1, 1)
   myturtle.goto(x,y)
-  distance = myturtle.distance(0,0)
-  if distance < 1:
+  if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
     myturtle.color("green")
   else:
     myturtle.color("red")
   myturtle.down()
   myturtle.dot()
   myturtle.color("black")
-
-def isInCircle(myturtle=None):
-  distance = myturtle.distance(0,0)
-  return(bool(distance < 1))
   
 def playDarts(myturtle=None):
-  throwDart(myturtle=myturtle)
-  if isInCircle(myturtle=myturtle)==True:
-    print(1)
+  player1points=0
+  player2points=0
+  for i in range(0,10): 
+    throwDart(myturtle=myturtle)
+    if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
+        player1points = player1points + 1
+    throwDart(myturtle=myturtle)
+    if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
+        player2points = player2points + 1
+  if player1points > player2points:
+    print("Player 1 Wins!")
   else:
-    print(0)
-  
+    if player1points < player2points:
+      print("Player 2 Wins!")
+    else: 
+      print("Both players Tied!")
 
+def montePi(myturtle=None, num_darts=0):
+  inside_count = 0
+  
+  
 #########################################################
 #         Do not alter any code below here              #
 #       Your code must work with the main proivided     #
