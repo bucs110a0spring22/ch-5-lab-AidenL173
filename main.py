@@ -41,13 +41,9 @@ def drawSquare(myturtle=None, width=0, top_left_x=0, top_left_y=0):
     
 def drawLine(myturtle=None, x_start=0, y_start=0, x_end=0, y_end=0):
   myturtle.up()
-  myturtle.goto(x_start,0)
+  myturtle.goto(x_start,y_start)
   myturtle.down()
-  myturtle.goto(x_end,0)
-  myturtle.up()
-  myturtle.goto(0,y_start)
-  myturtle.down()
-  myturtle.goto(0,y_end)
+  myturtle.goto(x_end,y_end)
   
 def drawCircle(myturtle=None, radius=0):
   myturtle.up()
@@ -64,6 +60,10 @@ def setUpDartboard(mywindow=None, myturtle=None):
 
 def isInCircle(myturtle=None, circle_center_x=0, circle_center_y=0, radius=0):
   distance = myturtle.distance(circle_center_x, circle_center_y)
+  if (distance <= radius):
+    myturtle.color("green")
+  else:
+    myturtle.color("red")
   return(bool(distance <= radius))
 
 def throwDart(myturtle=None):
@@ -72,22 +72,23 @@ def throwDart(myturtle=None):
   y = random.uniform(-1, 1)
   myturtle.goto(x,y)
   if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
-    myturtle.color("green")
+    myturtle.down()
+    myturtle.dot()
+    myturtle.color("black")
+    return(bool(1 == 1))
   else:
-    myturtle.color("red")
-  myturtle.down()
-  myturtle.dot()
-  myturtle.color("black")
+    myturtle.down()
+    myturtle.dot()
+    myturtle.color("black")
+    return(bool(1 < 1))
   
 def playDarts(myturtle=None):
   player1points=0
   player2points=0
   for i in range(0,10): 
-    throwDart(myturtle=myturtle)
-    if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
+    if throwDart(myturtle=myturtle):
       player1points = player1points + 1
-    throwDart(myturtle=myturtle)
-    if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
+    if throwDart(myturtle=myturtle):
       player2points = player2points + 1
   if player1points > player2points:
     print("Player 1 Wins!")
@@ -100,8 +101,7 @@ def playDarts(myturtle=None):
 def montePi(myturtle=None, num_darts=0):
   inside_count = 0
   for i in range(0,num_darts):
-    throwDart(myturtle=myturtle)
-    if isInCircle(myturtle=myturtle, circle_center_x=0, circle_center_y=0, radius=1):
+    if throwDart(myturtle=myturtle):
       inside_count = inside_count + 1
   return((inside_count / num_darts) * 4)
   
